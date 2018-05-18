@@ -1,0 +1,35 @@
+<p>
+  <strong>Content:</strong>
+  <%= raw(@lecture.content) %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @lecture.course.title%>
+</p>
+
+<p>
+  <strong>Attachment:</strong>
+  <%= link_to "Download Lecture Attachment", @lecture.attachment_url %>
+</p>
+<%= @lecture.get_likes.size %>
+<div class="btn-group">
+
+  <% if (current_user.liked? @lecture) %>
+    <%= link_to unlike_lecture_path(@lecture), method: :put, class: "btn btn-default btn-sm" do %>
+    <span class="glyphicon glyphicon-chevron-down"></span>
+      Unlike
+    <%end %>
+
+  <% else %>
+
+    <%= link_to like_lecture_path(@lecture), method: :put, class: "btn btn-primary btn-sm" do %>
+    <span class="glyphicon glyphicon-chevron-up"></span>
+      Like
+    <% end %>
+  <% end %>
+
+</div>
+<%= commontator_thread(@lecture)%>
+<%= link_to 'Edit', edit_lecture_path(@lecture) %> |
+<%= link_to 'Back', lectures_path %>

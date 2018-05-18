@@ -1,0 +1,38 @@
+1980  systemctl status sshd
+ 1981  sshd
+ 1982  sudo sshd
+ 1983  ls -alh /etc/ssh/
+ 1984  vim .ssh/authorized_keys
+ 1985  ipaddr
+ 1986  ip addr
+ 1987  cd .ssh
+ 1988  ls -alh
+ 1989  cd ..
+ 1990  chmod 700 .ssh
+ 1991  ls -alh
+ 1992  cd ..
+ 1993  cd 
+ 1994  cd .ssh
+ 1995  ls -alh
+ 1996  chmod 0600 authorized_keys
+ 1997  ls -alh
+ 1998  ip  addr
+ 1999  cd ..
+ 2000  sudo vim /etc/ssh/sshd_config
+ 2001  systemctl restart sshd
+ 2002  vim .ssh/authorized_keys
+ 2003  systemctl restart sshd
+ 2004  sudo tar -cvf iti_os38.tar /etc
+ 2005  cat /etc/password
+ 2006  sudo cat /etc/passwd
+ 2007  yum install xz
+ 2008  sudo yum install xz
+ 2009  sudo tar -czvf mycomress.tar.gz iti_os38.tar 
+ 2010  cd /tmp
+ 2011  ls -alh
+ 2012  cd test_rsync/
+ 2013  ls -alh
+ 2014  cat test
+ 2015  cd ..
+ 2016  ls -alh
+ 2017  history
