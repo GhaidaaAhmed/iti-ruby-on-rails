@@ -9,14 +9,26 @@
   </head>
 
   <body>
+  
+<header class='clearfix'>
+  <div class="left-nav">
+    <ul>
+     <li><%= link_to('Courses',courses_path ) %></li>
+    </ul>
+  </div>
+  <div class="right-nav">
+    <ul>
+      		<% if user_signed_in? %>
+					<li><%= link_to('My Account', edit_user_registration_path) %></li>
+					<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+				<% else %>
+					<li><%= link_to('Sign in', new_user_session_path) %></li>
+					<li><%= link_to('Sign up', new_user_registration_path) %></li>
+				<% end %>
+    </ul>
+  </div>
+</header>
   <div class="container" style="padding-top:20px;">
-         <% if user_signed_in? %>
-        <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-        <% else %>
-        <li><%= link_to 'Sign in ', new_user_session_path   %>  </li>
-        <li><%= link_to "Sign up!",  new_user_registration_path %></li>
-        
-        <% end %>
   <p id="notice"><%= notice %></p>
   <p id="alert"><%= alert %></p>
     <%= yield %>
