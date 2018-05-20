@@ -22,7 +22,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to course_url(Course.last)
   end
-
+  
   test "should show course" do
     get course_url(@course)
     assert_response :success

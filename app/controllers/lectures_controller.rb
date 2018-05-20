@@ -2,30 +2,45 @@ class LecturesController < InheritedResources::Base
   before_action :authenticate_user!
 
   def index
-    @lectures = Lecture.all
+    course = Course.find(params[:course_id]) 
+    @lectures = course.lectures
+   
   end
 
   def new
-    @lecture = Lecture.new
+    @course = Course.find params[:course_id]
+    @lecture = Lecture.new(:course=>@course)
   end
 
   def like
   @lecture = Lecture.find(params[:id])
   @lecture.liked_by current_user
-  redirect_to lecture_path
+  redirect_to([@lecture.course, @lecture])
 end
 
 def unlike
   @lecture = Lecture.find(params[:id])
   @lecture.unliked_by current_user
-  redirect_to lecture_path
+  redirect_to([@lecture.course, @lecture])
+end
+
+def dislike
+  @lecture = Lecture.find(params[:id])
+  @lecture.disliked_by current_user
+  redirect_to([@lecture.course, @lecture])
+end
+
+def undislike
+  @lecture = Lecture.find(params[:id])
+  @lecture.undisliked_by current_user
+  redirect_to([@lecture.course, @lecture])
 end
 
   def create
     @lecture = Lecture.new(lecture_params)
 
     if @lecture.save
-      redirect_to lectures_path
+      redirect_to([@lecture.course, @lecture])
     else
       render "new"
     end
@@ -34,7 +49,22 @@ end
   def destroy
     @lecture = Lecture.find(params[:id])
     @lecture.destroy
-    redirect_to lectures_path
+    redirect_to([@lecture.course, @lecture])
+  end
+
+  def edit
+    course = Course.find(params[:course_id])
+    @lecture = course.lectures.find(params[:id])
+  end
+
+  def update
+    course = Course.find(params[:course_id])
+    @lecture = course.lectures.find(params[:id])
+      if @lecture.update_attributes(lecture_params)
+        redirect_to([@lecture.course,@lecture], :notice => 'Lecture was successfully updated.') 
+      else
+        render :action => "edit" 
+      end
   end
 
   private

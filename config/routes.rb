@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
   
-  resources :lectures do
-    member do
-      put 'like', to: "lectures#like"
-      put 'unlike', to: "lectures#unlike"
+  resources :courses do 
+    resources :lectures do
+      member do
+        put 'like', to: "lectures#like"
+        put 'unlike', to: "lectures#unlike"
+        put 'dislike', to: "lectures#dislike"
+        put 'undislike', to: "lectures#undislike"
+      end
     end
   end
-  resources :courses
-  root "lectures#index"
+  root "courses#index"
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users

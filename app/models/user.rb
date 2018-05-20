@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  validates :name, :email, presence: true
   acts_as_voter
   acts_as_commontator
   mount_uploader :avatar, AvatarUploader

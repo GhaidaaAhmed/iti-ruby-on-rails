@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <h1><%= @lectures.first.course.title %>  Course </h1>
 <p>Lectures</p>
@@ -17,9 +16,9 @@
       <tr>
         <td><%= raw(lecture.content) %></td>
         <td><%= link_to "Download Lecture", lecture.attachment_url %></td>
-        <td><%= link_to 'Show', lecture %></td>
-        <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
-        <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show',[lecture.course, lecture] %></td>
+        <td><%= link_to 'Edit', edit_course_lecture_path(lecture.course,lecture) %></td>
+        <td><%= link_to 'Destroy', [lecture.course, lecture], method: :delete, data: { confirm: 'Are you sure?' } %></td>
         
       </tr>
     <% end %>
@@ -28,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Lecture', new_lecture_path %>
+<%= link_to 'New Lecture',new_course_lecture_path %>

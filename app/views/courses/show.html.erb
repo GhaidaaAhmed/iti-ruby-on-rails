@@ -10,5 +10,6 @@
   <%= @course.user.name %>
 </p>
 
+<%= link_to 'Lectures', course_lectures_path(@course) %> |
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>

@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @user = User.new(name: 'ghaidaa', email: 'ghada@mail.com')
+  end
+
+  test 'user mail' do
+    assert_equal @user.email,'ghada@mail.com'
+  end
 end
