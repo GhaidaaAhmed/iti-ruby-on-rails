@@ -15,7 +15,14 @@
     <ul>
      <li><%= link_to('Courses',courses_path ) %></li>
     </ul>
+  </div> 
+  <% if user_signed_in? %>
+  <div class="right-nav">
+    <ul>
+      <li class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb)) %></li>
+    </ul>
   </div>
+  	<% end %>
   <div class="right-nav">
     <ul>
       		<% if user_signed_in? %>

@@ -9,9 +9,9 @@
 </p>
 
 <p>
-  <strong>Lecture Attachment:</strong> 
-  <%= @lecture.attachment.filename %> 
-  <%= link_to "Download Attachment", @lecture.attachment_url %>
+  <strong>Lecture Attachment: </strong> <%= @lecture.attachment.filename %> 
+  <br/>
+  <div class="mx-auto"><%= link_to "Download Attachment", @lecture.attachment_url %></div>
 </p>
 <%= @lecture.get_likes.size %>
 <div class="btn-group">
@@ -44,9 +44,9 @@
     <% end %>
 </div>
 <% if current_user.lectures.exists?(@lecture.id) %>
-<%= link_to 'Remove Spam', rm_spam_course_lecture_path(course_id: @lecture.course.id,id:@lecture.id) %>
+<%= link_to 'Remove Spam', rm_spam_course_lecture_path(course_id: @lecture.course.id,id:@lecture.id),class: "btn btn-danger" %>
 <% else %>
-<%= link_to 'Spam', spam_course_lecture_path(course_id: @lecture.course.id,id:@lecture.id) %>
+<%= link_to 'Spam', spam_course_lecture_path(course_id: @lecture.course.id,id:@lecture.id),class: "btn btn-danger" %>
 <% end %>
 <%= commontator_thread(@lecture)%>
 <%= link_to 'Edit', edit_course_lecture_path(@lecture.course,@lecture) %> |
