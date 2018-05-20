@@ -1,6 +1,7 @@
-
+<% unless @profile.blank? %>
 <h1><%= @lectures.first.course.title %>  Course </h1>
 <p>Lectures</p>
+<%end%>
 
 <table>
   <thead>

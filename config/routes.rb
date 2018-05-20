@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   
   resources :courses do 
     resources :lectures do
+      collection do
+        get:all_spam
+      end
       member do
+        get:spam , to: "lectures#spam"
+        get:rm_spam , to: "lectures#rm_spam"
         put 'like', to: "lectures#like"
         put 'unlike', to: "lectures#unlike"
         put 'dislike', to: "lectures#dislike"

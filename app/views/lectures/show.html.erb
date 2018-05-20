@@ -44,7 +44,12 @@
     <% end %>
     <% end %>
 </div>
-
+<% if current_user.lectures.exists?(@lecture.id) %>
+<%= link_to 'Remove Spam', rm_spam_course_lecture_path(@lecture) %>
+<% else %>
+<%= link_to 'Spam', spam_course_lecture_path(@lecture) %>
+<% end %>
 <%= commontator_thread(@lecture)%>
 <%= link_to 'Edit', edit_course_lecture_path(@lecture.course,@lecture) %> |
 <%= link_to 'Back', course_lectures_path(@lecture.course) %>
+

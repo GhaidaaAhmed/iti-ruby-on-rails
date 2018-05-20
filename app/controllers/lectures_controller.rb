@@ -67,6 +67,26 @@ end
       end
   end
 
+  def spam
+    course = Course.find(params[:course_id])
+    @lecture = course.lectures.find(params[:id])
+    @user=current_user
+    if(!@user.lectures.exists?(@lecture.id))
+      @user.lectures << @lecture
+      @user.save
+    end
+    redirect_to([@lecture.course,@lecture])
+   end
+
+  # GET /products/1/rm_fav
+  def rm_spam
+    course = Course.find(params[:course_id])
+    @lecture = course.lectures.find(params[:id])
+    @user=current_user
+    @user.lectures.delete(@lecture)
+    redirect_to([@lecture.course,@lecture])
+   end
+
   private
 
     def lecture_params

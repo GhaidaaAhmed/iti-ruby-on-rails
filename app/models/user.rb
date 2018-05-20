@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :name, :email, presence: true
   acts_as_voter
   acts_as_commontator
+  has_and_belongs_to_many :lectures
   mount_uploader :avatar, AvatarUploader
   validates_integrity_of  :avatar
   validates_processing_of :avatar
