@@ -1,5 +1,6 @@
-<% unless @profile.blank? %>
-<h1><%= @lectures.first.course.title %>  Course </h1>
+<% unless @lectures.first.blank? %>
+<% course=@lectures.first.course %>
+<h1><%= course.title %>  Course </h1>
 <p>Lectures</p>
 <%end%>
 

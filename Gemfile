@@ -25,8 +25,8 @@ gem 'acts_as_votable', '~> 0.11.1'
 gem 'bootstrap'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick', '~> 4.3'
-gem 'commontator', '~> 5.1.0'
 gem 'ckeditor'
+gem 'commontator', '~> 5.1.0'
 gem "paperclip"
 
 

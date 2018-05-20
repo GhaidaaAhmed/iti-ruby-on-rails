@@ -1,12 +1,11 @@
 module Commontator
   class ApplicationController < ActionController::Base
     before_action  :authenticate_user!,:set_user, :ensure_user
-    #helper_method :current_user
-
-    #def current_user
-     # return unless session[:user_id]
+#    helper_method :current_user
+#def current_user
+      #return unless session[:user_id]
       #@current_user ||= User.find(session[:user_id])
-   #end
+   #end 
 
     rescue_from SecurityTransgression, with: -> { head(:forbidden) }
 

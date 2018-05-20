@@ -1,0 +1,12 @@
+$ rails new market
+
+Edit Gemfile and add the following :
+gem 'activeadmin', '~> 1.0.0.pre2' 
+gem 'devise'
+
+Then
+
+$ cd market
+$ bundle install
+$ rails s 
+http://localhost:3000/

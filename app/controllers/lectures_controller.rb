@@ -8,9 +8,15 @@ class LecturesController < InheritedResources::Base
   end
 
   def new
-    @course = Course.find params[:course_id]
+    @course = Course.find(params[:course_id])
     @lecture = Lecture.new(:course=>@course)
   end
+
+  def show
+    course = Course.find(params[:course_id])
+    @lecture = course.lectures.find(params[:id])
+    commontator_thread_show(@lecture)
+end
 
   def like
   @lecture = Lecture.find(params[:id])
@@ -37,8 +43,8 @@ def undislike
 end
 
   def create
-    @lecture = Lecture.new(lecture_params)
-
+    course = Course.find(params[:course_id])
+    @lecture = course.lectures.create(lecture_params)
     if @lecture.save
       redirect_to([@lecture.course, @lecture])
     else
@@ -78,7 +84,7 @@ end
     redirect_to([@lecture.course,@lecture])
    end
 
-  # GET /products/1/rm_fav
+
   def rm_spam
     course = Course.find(params[:course_id])
     @lecture = course.lectures.find(params[:id])

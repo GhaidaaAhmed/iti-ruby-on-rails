@@ -37,7 +37,6 @@
       Undislike
     <%end %>
      <% else %>
-
     <%= link_to dislike_course_lecture_path(@lecture), method: :put, class: "btn btn-primary btn-sm" do %>
     <span class="glyphicon glyphicon-chevron-up"></span>
       disLike
@@ -45,9 +44,9 @@
     <% end %>
 </div>
 <% if current_user.lectures.exists?(@lecture.id) %>
-<%= link_to 'Remove Spam', rm_spam_course_lecture_path(@lecture) %>
+<%= link_to 'Remove Spam', rm_spam_course_lecture_path(course_id: @lecture.course.id,id:@lecture.id) %>
 <% else %>
-<%= link_to 'Spam', spam_course_lecture_path(@lecture) %>
+<%= link_to 'Spam', spam_course_lecture_path(course_id: @lecture.course.id,id:@lecture.id) %>
 <% end %>
 <%= commontator_thread(@lecture)%>
 <%= link_to 'Edit', edit_course_lecture_path(@lecture.course,@lecture) %> |
